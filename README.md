@@ -110,6 +110,7 @@ public interface MvpCallback {
 	}
 ```	
 第7步：如上方法实现后，那我们的View和model层都有了，我们要实现presenter层，这个是作为中间转换成，要实现model层和view层的方法；所以要传递一个实现View接口的窗口视图进来，然后调用model层的数据获取方法，将model层的数据展示给我我们的view哦；啥都不说了，代码看一眼就懂了；
+
 **MvpPresenter类**
 ```
 public class MvpPresenter {
@@ -157,6 +158,7 @@ public class MvpPresenter {
 	}
 ```
 第8步：是不是很刺激？看看自己都写了什么❓，下面就是见证奇迹的时刻，我们的mainActivity中应该如何编写？布局文件很简单，就是一个线性布局，里面一个Button，一个TextView；在Activity中，要实例化Presenter类，并且那几个方法都在Presenter中实现了哦，在来一个dialog展示框就行了，对不对？上代码看看吧，会好理解一些；
+
 **MainActivity 类**
 ```
 public class MainActivity extends AppCompatActivity implements MvpView {
@@ -238,3 +240,4 @@ public class MainActivity extends AppCompatActivity implements MvpView {
 #### 四.如上就是实现的过程，这是一个简单的demo，帮助我们理解和熟悉MVP到底是什么玩意，真的想要在项目中实践，还需要花费一番功夫来弄。这个简单的demo先分享给大家，更多的MVP的内容，我会在下面的文章中更新，欢迎大家一起交流，感谢大家；
 
 最后附上一个GitHub的下载地址
+https://github.com/softwareboy92/MVP
