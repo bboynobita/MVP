@@ -20,10 +20,11 @@
 
 #### 三.接下来是代码实现的过程
 ##### 1.从创建开始
-第1步：打开Android Studio 然后新建一个工程；
-第2步：在工程中，新建三个包，分个层，分别是modle、view、presenter
-第3步：思考下我们要实现的功能，模拟网络请求，然后点击Button，实现页面上的TextView的文字改变，这中间我们用Handler模拟一下网络请求
-第4步：思考一下我们在MVC的时候，Activity要实现的方法:
+
+1. 打开Android Studio 然后新建一个工程；
+2. 在工程中，新建三个包，分个层，分别是modle、view、presenter
+3. 思考下我们要实现的功能，模拟网络请求，然后点击Button，实现页面上的TextView的文字改变，这中间我们用Handler模拟一下网络请求
+4. 思考一下我们在MVC的时候，Activity要实现的方法:
 
 * 	点击按钮请求数据
 * 	当数据请求成功后，调用此接口显示数据
@@ -32,7 +33,8 @@
 * 	显示正在加载进度框
 * 	隐藏正在加载进度框
 
-第5步：根据上面分析在MVC中所要实现的方法，我们来实现在MVP的View层的接口中需要实现这几个方法；
+5. 根据上面分析在MVC中所要实现的方法，我们来实现在MVP的View层的接口中需要实现这几个方法；
+
 ```
 public interface MvpView {
     /**
@@ -59,7 +61,9 @@ public interface MvpView {
     void showErrorMessage();
 }	
 ```
-第6步：我们的View层好像写好了，接下来我们来想想我们的model层吧。其实很简单，我们说了model层是数据获取传输的层，那么在model中创建个model类，然后写一个获取数据的静态方法，这是获取到数据了，那么我们获取到的数据怎么传递给我们的Presenter呢？ 不饶了，利用接口Callback方法来进行数据的回调；两段代码如下：
+
+6. 我们的View层好像写好了，接下来我们来想想我们的model层吧。其实很简单，我们说了model层是数据获取传输的层，那么在model中创建个model类，然后写一个获取数据的静态方法，这是获取到数据了，那么我们获取到的数据怎么传递给我们的Presenter呢？ 不饶了，利用接口Callback方法来进行数据的回调；两段代码如下：
+
 **MvpModel类**
 ```
 public class MvpModel {
@@ -112,7 +116,8 @@ public interface MvpCallback {
     
 	}
 ```	
-第7步：如上方法实现后，那我们的View和model层都有了，我们要实现presenter层，这个是作为中间转换成，要实现model层和view层的方法；所以要传递一个实现View接口的窗口视图进来，然后调用model层的数据获取方法，将model层的数据展示给我我们的view哦；啥都不说了，代码看一眼就懂了；
+
+7. 如上方法实现后，那我们的View和model层都有了，我们要实现presenter层，这个是作为中间转换成，要实现model层和view层的方法；所以要传递一个实现View接口的窗口视图进来，然后调用model层的数据获取方法，将model层的数据展示给我我们的view哦；啥都不说了，代码看一眼就懂了；
 
 **MvpPresenter类**
 ```
@@ -160,7 +165,7 @@ public class MvpPresenter {
     }
 	}
 ```
-第8步：是不是很刺激？看看自己都写了什么❓，下面就是见证奇迹的时刻，我们的mainActivity中应该如何编写？布局文件很简单，就是一个线性布局，里面一个Button，一个TextView；在Activity中，要实例化Presenter类，并且那几个方法都在Presenter中实现了哦，在来一个dialog展示框就行了，对不对？上代码看看吧，会好理解一些；
+8. 是不是很刺激？看看自己都写了什么❓，下面就是见证奇迹的时刻，我们的mainActivity中应该如何编写？布局文件很简单，就是一个线性布局，里面一个Button，一个TextView；在Activity中，要实例化Presenter类，并且那几个方法都在Presenter中实现了哦，在来一个dialog展示框就行了，对不对？上代码看看吧，会好理解一些；
 
 **MainActivity 类**
 ```
